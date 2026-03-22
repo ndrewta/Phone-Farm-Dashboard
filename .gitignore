@@ -1,3 +1,4 @@
 Backend/.venv
-Backend/.env
 Backend/src/__pycache__
+.env
+config/devices.json

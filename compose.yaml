@@ -1,0 +1,10 @@
+services:
+  phone-farm:
+    build: ./Backend
+    volumes:
+      - ./config:/app/config  # Maps Root/config to Container/app/config
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: always
