@@ -1,3 +1,7 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -29,6 +33,18 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            // Read the property from local.properties
+            val props = Properties()
+            val propFile = project.rootProject.file("local.properties")
+
+            if (propFile.exists()) {
+                props.load(FileInputStream(propFile))
+            }
+
+            // Create a "BuildConfig" constant
+            buildConfigField("String", "BACKEND_URL", "\"${props.getProperty("BACKEND_IP")}\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -36,6 +52,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -48,6 +65,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

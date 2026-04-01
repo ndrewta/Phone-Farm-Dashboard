@@ -65,7 +65,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
-@app.post("/devices/{device_id}")
+@app.post("/update/")
 async def handle_device_report(device: DeviceReport):
 
     device_list = load_config()

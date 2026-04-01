@@ -12,7 +12,7 @@ This project is a three-tier system designed to monitor, manage, and analyse dat
 
 ┌─────────────────┐                 ┌──────────────┐                 ┌──────────────┐
 │  Mobile Devices |  → HTTP/JSON →  |    Backend   |  → REST API →   │   Dashboard  │
-│  (Data Source)  |                 |   (Python)   |                 │  (Frontend)  │
+│  (Data Source)  |                 |   (Python)   |                 │ (Typescript) │
 └─────────────────┘                 └──────────────┘                 └──────────────┘
 ```
 
@@ -90,80 +90,16 @@ This project is a three-tier system designed to monitor, manage, and analyse dat
    # Test health endpoint
     http://localhost:8000/
 
-##  ---  Roadmap  ---
-
-   ##  Mobile App (Coming Soon)
-
-   The mobile app will collect and transmit device data to the backend including:
-
-   - Device identifier
-   - Battery status and health
-   - App usage statistics
-   - TP300 plug position
-   - Connected SIMs
-
-   ### Data Transmission Format
+### Data Transmission Format
    ```bash
       json
    {
    "device_id": "unique-device-identifier",
    "battery_level": 85,
-   "is_connected": "True",
+   "is_charging": "True",
    "plug_slot": 1,
-   "sims": {k:v}
+   "sim_1": "0123456789"
+   "sim_2": "0123456789"
    "app_data": {k:v}
       }
 ```
-
-##  Frontend Dashboard (Coming Soon)
-
-The web dashboard will provide:
-
-- Device status overview (online/offline)
-- Realtime metrics
-- Performance metrics visualization
-- Device grouping and filtering
-- SIM expiry
-- App performance
-- TP300 status
-
-### Features
--  Interactive charts and graphs
--  Real-time notifications
--  Customisable views
--  Modifiable data
-
-##  Development Roadmap
-
-### Phase 1: Backend 
-- [x] API endpoint structure
-- [x] Database models
-- [x] Device registration
-- [x] Data collection endpoints
-- [x] Basic authentication
-
-### Phase 2: Mobile App 
-- [ ] App architecture design
-- [ ] Data collection modules
-- [ ] API integration
-- [ ] Background service
-- [ ] Testing on multiple devices
-
-### Phase 3: Frontend Dashboard 
-- [ ] Dashboard framework setup
-- [ ] Real-time data visualization
-- [ ] Device management interface
-- [ ] Alert system
-- [ ] User authentication
-- [ ] Responsive design
-
-### Phase 4: Deployment 
-- [x] Docker containerisation
-- [ ] CI/CD pipeline
-- [ ] Production server setup
-- [ ] Monitoring and logging
-- [ ] Documentation
-
-
-This project is under active development. The mobile app and frontend dashboard components are currently being developed. Check back for updates!
----
